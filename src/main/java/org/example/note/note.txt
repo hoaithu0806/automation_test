@@ -1,0 +1,17 @@
+System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+→ Selenium sẽ dùng file chromedriver.exe (hoặc tương đương trên macOS/Linux) nằm ở đường dẫn bạn chỉ định để chạy Chrome trên máy local của bạn.
+
+Nếu không setProperty (trong Selenium 4.6+ trở lên)
+→ Selenium có Selenium Manager tích hợp, nó sẽ tự tải và quản lý ChromeDriver phù hợp với phiên bản Chrome của bạn, không cần chỉ rõ đường dẫn nữa.
+
+Điều này giúp code gọn hơn:
+
+WebDriver driver = new ChromeDriver(); // Selenium tự lo driver
+Nhưng yêu cầu bạn đang dùng Selenium bản mới và có Chrome đã cài sẵn trên máy.
+
+Ngoài ra, nếu không set property và không dùng Selenium Manager, thì:
+
+Bạn sẽ bị lỗi kiểu "The path to the driver executable must be set by the webdriver.chrome.driver system property"
+
+Hoặc Selenium sẽ không biết driver ở đâu → Chrome không mở được.
+
